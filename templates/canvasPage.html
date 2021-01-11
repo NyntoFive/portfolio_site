@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+       <meta charset="UTF-8">
+       <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+       <meta http-equiv="x-ua-compatible" content="ie=edge">
+       <title>Material Design for Bootstrap</title>
+       <!-- Font Awesome -->
+       <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
+       <!-- Google Fonts Roboto -->
+       <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap">
+       <!-- Bootstrap core CSS -->
+       <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css" rel="stylesheet">
+       <!-- Material Design Bootstrap -->
+       <link href="static/css/mdb.min.css" rel="stylesheet">
+       <link type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.5.6/p5.min.js"></script>
+       <style>
+           * {
+  margin:0px;
+  padding:0px;
+  box-sizing:border-box;
+}
+body {
+  background:#555;
+}
+.app {
+  position:fixed;
+  top:50%;
+  left:50%;
+  transform:translate(-50%,-50%);
+  width:650px;
+  height:650px;
+  font-family:"Raleway", sans-serif;
+}
+.app .controls {
+  height:50px;
+  display:flex;
+  align-items:center;
+  background:#ddd;
+  padding:0px 10px;
+}
+.app .controls .title {
+  font-weight:600;
+  color:#222;
+  width:80px;
+}
+.app .controls .type,
+.app .controls .size,
+.app .controls .color {
+  margin: 0px 10px;
+}
+.app .controls .type input {
+  display:none;
+}
+.app .controls .type label {
+  width:30px;
+  height:30px;
+  display:inline-block;
+  text-align:center;
+  line-height:30px;
+  margin:0px 2px;
+  cursor:pointer;
+}
+.app .controls .type input:checked + label {
+  background:#111;
+  color:#eee;
+  border-radius:50%;
+}
+.app .controls .size input {
+  height:10px;
+}
+.app .controls .actions {
+  flex:1;
+  text-align:right;
+}
+.app .controls .actions button {
+  padding:5px 10px;
+  cursor:pointer;
+}
+       </style>
+   </head>
+   <body>
+       <!-- Start your project here-->
+       <div style="height: 100vh">
+        <div class="app">
+            <div class="controls">
+              <div class="title">Sketch</div>
+              <div class="type">
+                <input type="radio" name="pen-type" id="pen-pencil" checked>
+                <label for="pen-pencil">
+                  <i class="fa fa-pencil"></i>
+                </label>
+                <input type="radio" name="pen-type" id="pen-brush">
+                <label for="pen-brush">
+                  <i class="fa fa-paint-brush"></i>
+                </label>
+              </div>
+              <div class="size">
+                <label for="pen-size">Size</label>
+                <input type="range" id="pen-size" min="1" max="50">
+              </div>
+              <div class="color">
+                <label for="pen-color">Color</label>
+                <input type="color" id="pen-color" value="#000">
+              </div>
+              <div class="actions">
+                <button id="reset-canvas">Reset</button>
+                <button id="save-canvas">Save</button>
+              </div>
+            </div>
+            <div id="canvas-wrapper"></div>
+          </div>
+
+       </div>
+        <script>
+            function _(selector){
+  return document.querySelector(selector);
+}
+function setup(){
+  let canvas = createCanvas(650, 600);
+  canvas.parent("canvas-wrapper");
+  background(255);
+}
+function mouseDragged(){
+  let type = _("#pen-pencil").checked?"pencil":"brush";
+  let size = parseInt(_("#pen-size").value);
+  let color = _("#pen-color").value;
+  fill(color);
+  stroke(color);
+  if(type == "pencil"){
+    line(pmouseX, pmouseY, mouseX, mouseY);
+  } else {
+    ellipse(mouseX, mouseY, size, size);
+  }
+}
+_("#reset-canvas").addEventListener("click", function(){
+  background(255);
+});
+_("#save-canvas").addEventListener("click",function(){
+  saveCanvas(canvas, "sketch", "png");
+});
+
+
+        </script>
+       <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+       <!-- Bootstrap tooltips -->
+       <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.4/umd/popper.min.js"></script>
+       <!-- Bootstrap core JavaScript -->
+       <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/js/bootstrap.min.js"></script>
+       <!-- MDB core JavaScript -->
+       <script type="text/javascript" src="static/js/mdb.min.js"></script>
+       
+   </body>
+</html>
