@@ -1,0 +1,59 @@
+{% extends 'local_base.html' %}
+{% block header %}
+<header id="header" class="header has-sticky sticky-fade">
+	<div class="header-wrapper">
+		<div id="top-bar" class="header-top nav-dark flex-has-center">
+			<span>FREE SHIPPING ON ORDERS OVER </span>
+		</div>
+		<div id="masthead" class="header-main has-sticky-logo"></div>
+		<div id="wide-nav" class="header-bottom wide-nav flex-has-center hide-for-medium"></div>
+	</div>
+</header>
+{% endblock header %}
+{% block content %}
+{% endblock content %} 
+{% block footer %}
+<footer id="footer"></footer>
+{% endblock footer %}
+
+{% block css %}
+<style>
+.header-bg-image, .header-bg-color {
+	background-position: 50% 0;
+	transition: background .4s;
+}
+.fill {
+	position: absolute;
+	top: 0;
+	left: 0;
+	height: 100%;
+	right: 0;
+	bottom: 0;
+	padding: 0 !important!;
+	margin: 0 !important!;
+}
+*, ::before, ::after {
+	box-sizing: border-box;
+}
+#header {
+	height: 200px;
+	background-color: rgba(0,111,114,.3);
+}
+#main {
+	
+	background-color: rgba(0,0,0,.5);
+}
+#footer {
+	height: 200px;
+	background-color: rgba(0,2,0,.8);
+}
+#top-bar {
+	text-align: center;
+	border-bottom: 1px solid black;
+}
+</style>
+{% endblock css %}
+{% block js %}
+<script>
+new Datatable(element, data, {fixedHeader: true, color: "dark", bordered: true, striped: true, hover: true, dark: true, borderColor: "info", maxHeight: "830px"})</script>
+{% endblock js %}
