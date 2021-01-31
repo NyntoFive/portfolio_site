@@ -40,6 +40,7 @@ async def read_item(request: Request, id: str):
 @app.get("/canvas/")
 async def canvas(request: Request):
     return templates.TemplateResponse("canvasPage.html",{"request": request, "id": id})
+
 @app.get("/c/")
 async def can(request: Request):
     return templates.TemplateResponse("home.html",{"request": request, "id": id})
@@ -47,3 +48,12 @@ async def can(request: Request):
 async def home(request: Request):
     return templates.TemplateResponse("index.html",{"request": request, "id": id})
 
+@app.get("/")
+async def home(request: Request):
+    return templates.TemplateResponse("index.html",{"request": request, "id": id})
+@app.get("/insta/")
+async def instagram_clone(request: Request):
+    return templates.TemplateResponse("instagram_clone.html", {"request": request, "id": id})
+@app.get("/shop/")
+async def instagram(request: Request):
+    return templates.TemplateResponse("showgrow.html", {"request": request, "id": id})
