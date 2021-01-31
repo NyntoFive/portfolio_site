@@ -33,17 +33,20 @@ async def get_query_token(token: str):
 # async def read_user(username: str):
 #     return {"username": username}
 
-# @app.get("/items/{id}", response_class=HTMLResponse)
-# async def read_item(request: Request, id: str):
-#     return templates.TemplateResponse("home.html", {"request": request, "id": id})
+@app.get("/items/{id}", response_class=HTMLResponse)
+async def read_item(request: Request, id: str):
+    return templates.TemplateResponse("home.html", {"request": request, "id": id})
 
-# @app.get("/canvas/")
-# async def canvas(request: Request):
-#     return templates.TemplateResponse("canvasPage.html",{"request": request, "id": id})
+@app.get("/canvas/")
+async def canvas(request: Request):
+    return templates.TemplateResponse("canvasPage.html",{"request": request, "id": id})
 
 @app.get("/c/")
 async def can(request: Request):
     return templates.TemplateResponse("home.html",{"request": request, "id": id})
+@app.get("/")
+async def home(request: Request):
+    return templates.TemplateResponse("index.html",{"request": request, "id": id})
 
 @app.get("/")
 async def home(request: Request):
